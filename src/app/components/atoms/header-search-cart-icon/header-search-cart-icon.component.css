@@ -1,0 +1,14 @@
+#contadorCarrinhoDiv{
+  text-align: center;
+  color: #FFF;
+  justify-content: center;
+  border: #a44e08 solid 0.5px;
+  background-color: #ff6500;
+  border-radius: 30%;
+  display: block;
+  position: relative;
+  bottom: 2.5rem;
+  left: 1.7rem;
+  width: 1.5rem;
+  height: 1.6rem;
+}

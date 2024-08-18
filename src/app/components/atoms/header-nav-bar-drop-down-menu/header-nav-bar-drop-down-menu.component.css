@@ -1,0 +1,24 @@
+.navBar{
+  background-color:#fb8013;/*034377 / cc5f00 /0060b1*/
+}
+.link-nav-menu{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 1rem;
+  color: #FFF;
+  text-align: center;
+  transition: 0.4s;
+}
+
+.link-nav-menu:visited{
+  text-decoration: none;
+  color: #FFF;
+}
+
+.link-nav-menu:hover{
+  text-decoration: none;
+  text-align: center;
+  color: #FFF;
+  background-color: #e35214;
+}
