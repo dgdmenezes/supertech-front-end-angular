@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -32,7 +33,10 @@ import { HomeCarouselComponent } from './components/molecules/home-carousel/home
 import { CardGroupComponent } from './components/organisms/card-group/card-group.component';
 import { CardItemComponent } from './components/molecules/card-item/card-item.component';
 import { AddShoppingCartIconComponent } from './components/icons/add-shopping-cart-icon/add-shopping-cart-icon.component';
-
+//Localização PT-BR
+import { registerLocaleData } from '@angular/common';
+import localePT from "@angular/common/locales/pt"
+registerLocaleData(localePT)
 
 @NgModule({
   declarations: [
@@ -70,6 +74,7 @@ import { AddShoppingCartIconComponent } from './components/icons/add-shopping-ca
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule
 
   ],
   providers: [],
