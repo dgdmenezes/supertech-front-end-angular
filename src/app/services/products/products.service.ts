@@ -2,7 +2,10 @@ import {HttpClient} from "@angular/common/http"
 import { Injectable } from '@angular/core';
 
 import { Observable } from "rxjs";
+//models
 import { GetAllProductsResponse } from "src/app/models/interfaces/products/responses/GetAllProductsResponse";
+import { GetProductData } from "src/app/models/interfaces/products/responses/GetProductData";
+//enviroment
 import { environment } from "src/environments/environment.prod";
 
 
@@ -16,6 +19,10 @@ export class ProductsService {
 
   getAllProductsIndex(): Observable<Array<GetAllProductsResponse>>{
     return this.http.get<Array<GetAllProductsResponse>>(`${this.API_URL}/products/find/find?category=&limit=12&skip=0`)
+  }
+
+  getProductOneProductData(): Observable<GetProductData>{
+    return this.http.get<GetProductData>(`${this.API_URL}/products/6537af92f87363f9359f8c56`)
   }
 
 }

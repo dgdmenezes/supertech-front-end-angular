@@ -18,12 +18,9 @@ CardsData:GetAllProductsResponse[] = this.ProductDataReceived
 
 ngOnInit(): void {
   this.CardsData = this.ProductDataReceived
-  console.log("this.CardsData");
-  console.log(this.CardsData);
+  console.log("card DATA" + this.CardsData);
 }
 
-getDataCard():void{
 
-}
 
 }

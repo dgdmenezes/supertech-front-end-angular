@@ -35,7 +35,10 @@ import { CardItemComponent } from './components/molecules/card-item/card-item.co
 import { AddShoppingCartIconComponent } from './components/icons/add-shopping-cart-icon/add-shopping-cart-icon.component';
 //Localização PT-BR
 import { registerLocaleData } from '@angular/common';
-import localePT from "@angular/common/locales/pt"
+import localePT from "@angular/common/locales/pt";
+import { ProductReviewComponent } from './components/molecules/product-review/product-review.component';
+import { ProductSpecsComponent } from './components/molecules/product-specs/product-specs.component';
+import { ProductShowComponent } from './components/molecules/product-show/product-show.component'
 registerLocaleData(localePT)
 
 @NgModule({
@@ -69,6 +72,9 @@ registerLocaleData(localePT)
     CardGroupComponent,
     CardItemComponent,
     AddShoppingCartIconComponent,
+    ProductReviewComponent,
+    ProductSpecsComponent,
+    ProductShowComponent,
 
   ],
   imports: [

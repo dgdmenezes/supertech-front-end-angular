@@ -2,7 +2,6 @@ import { GetAllProductsResponse } from './../../../models/interfaces/products/re
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/services/products/products.service';
 
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -22,7 +21,7 @@ export class HomeComponent implements OnInit{
     this.productsService.getAllProductsIndex()
     .subscribe(produtos => {
       this.produtosRecebidos = produtos
-      console.log(this.produtosRecebidos.indexOf);
+      console.log(this.produtosRecebidos);
     })
 }
 
