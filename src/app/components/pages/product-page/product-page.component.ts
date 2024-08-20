@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { GetProductData } from 'src/app/models/interfaces/products/responses/GetProductData';
 import { ProductsService } from 'src/app/services/products/products.service';
 
@@ -9,16 +10,24 @@ import { ProductsService } from 'src/app/services/products/products.service';
 })
 export class ProductPageComponent implements OnInit {
   dadosDoProduto:GetProductData = {} as GetProductData
+  productId:string | null = null
 
+  constructor(
+    private productsService:ProductsService,
+    private route:ActivatedRoute
 
-  constructor(private productsService:ProductsService){}
+  ){}
+
 
   ngOnInit(): void {
-    this.GetOneProductData()
+    this.route.paramMap.subscribe(params =>{
+    this.productId = params.get('id')
+    })
+    this.GetOneProductData(`${this.productId}`)
   }
 
-  GetOneProductData():void{
-    this.productsService.getProductOneProductData()
+  GetOneProductData(id:string):void{
+    this.productsService.getProductOneProductData(id)
     .subscribe({
       next:(response)=>{
         this.dadosDoProduto = response;
