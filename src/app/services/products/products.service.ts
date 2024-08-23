@@ -21,6 +21,10 @@ export class ProductsService {
     return this.http.get<Array<GetAllProductsResponse>>(`${this.API_URL}/products/find/find?category=&limit=12&skip=0`)
   }
 
+  getSuggestedeProductData():Observable<Array<GetAllProductsResponse>>{
+    return this.http.get<Array<GetAllProductsResponse>>(`${this.API_URL}/products/index/index?skip=0&limit=4`)
+  }
+
   getProductOneProductData(id:string): Observable<GetProductData>{
     return this.http.get<GetProductData>(`${this.API_URL}/products/${id}`)
   }

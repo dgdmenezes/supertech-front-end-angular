@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GetProductData } from 'src/app/models/interfaces/products/responses/GetProductData';
 import { ProductsService } from 'src/app/services/products/products.service';
+import { GetAllProductsResponse } from 'src/app/models/interfaces/products/responses/GetAllProductsResponse';
 
 @Component({
   selector: 'app-product-page',
@@ -10,7 +11,9 @@ import { ProductsService } from 'src/app/services/products/products.service';
 })
 export class ProductPageComponent implements OnInit {
   dadosDoProduto:GetProductData = {} as GetProductData
+  produtosSugeridosRecebidos:GetAllProductsResponse[] = []
   productId:string | null = null
+
 
   constructor(
     private productsService:ProductsService,
@@ -24,6 +27,7 @@ export class ProductPageComponent implements OnInit {
     this.productId = params.get('id')
     })
     this.GetOneProductData(`${this.productId}`)
+    this.GetSuggestedProductsData()
   }
 
   GetOneProductData(id:string):void{
@@ -37,10 +41,21 @@ export class ProductPageComponent implements OnInit {
         console.log(err);
 
       }
-    })
+    })}
 
-  }
+    GetSuggestedProductsData():void{
+      this.productsService.getSuggestedeProductData()
+      .subscribe({
+        next:(response)=>{
+          this.produtosSugeridosRecebidos = response
+          console.log(this.produtosSugeridosRecebidos);
+        },
+        error:(err)=>{
+           console.log(err);
+        }
 
+      })
+    }
 
 
 
