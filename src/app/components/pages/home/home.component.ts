@@ -1,5 +1,6 @@
 import { GetAllProductsResponse } from './../../../models/interfaces/products/responses/GetAllProductsResponse';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject, takeUntil } from 'rxjs';
 import { ProductsService } from 'src/app/services/products/products.service';
 
 @Component({
@@ -7,8 +8,8 @@ import { ProductsService } from 'src/app/services/products/products.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit{
-
+export class HomeComponent implements OnInit, OnDestroy{
+  private readonly destroy$: Subject<void> = new Subject();
   produtosRecebidos:GetAllProductsResponse[] = []
 
   constructor(private productsService:ProductsService){}
@@ -19,12 +20,16 @@ export class HomeComponent implements OnInit{
 
   getAPIIndexProduct():void{
     this.productsService.getAllProductsIndex()
+    .pipe(takeUntil(this.destroy$))
     .subscribe(produtos => {
       this.produtosRecebidos = produtos
       console.log(this.produtosRecebidos);
     })
 }
 
-
+ngOnDestroy(): void {
+  this.destroy$.next();
+  this.destroy$.complete()
+}
 
 }

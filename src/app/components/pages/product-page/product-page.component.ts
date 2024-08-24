@@ -1,26 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GetProductData } from 'src/app/models/interfaces/products/responses/GetProductData';
 import { ProductsService } from 'src/app/services/products/products.service';
 import { GetAllProductsResponse } from 'src/app/models/interfaces/products/responses/GetAllProductsResponse';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-product-page',
   templateUrl: './product-page.component.html',
   styleUrls: ['./product-page.component.css']
 })
-export class ProductPageComponent implements OnInit {
+export class ProductPageComponent implements OnInit, OnDestroy {
+  private readonly destroy$: Subject<void> = new Subject();
+
   dadosDoProduto:GetProductData = {} as GetProductData
   produtosSugeridosRecebidos:GetAllProductsResponse[] = []
   productId:string | null = null
 
-
   constructor(
     private productsService:ProductsService,
     private route:ActivatedRoute
-
   ){}
-
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params =>{
@@ -32,6 +32,7 @@ export class ProductPageComponent implements OnInit {
 
   GetOneProductData(id:string):void{
     this.productsService.getProductOneProductData(id)
+    .pipe(takeUntil(this.destroy$))
     .subscribe({
       next:(response)=>{
         this.dadosDoProduto = response;
@@ -45,6 +46,7 @@ export class ProductPageComponent implements OnInit {
 
     GetSuggestedProductsData():void{
       this.productsService.getSuggestedeProductData()
+      .pipe(takeUntil(this.destroy$))
       .subscribe({
         next:(response)=>{
           this.produtosSugeridosRecebidos = response
@@ -57,7 +59,9 @@ export class ProductPageComponent implements OnInit {
       })
     }
 
-
-
+    ngOnDestroy(): void {
+      this.destroy$.next();
+      this.destroy$.complete();
+    }
 }
 
