@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 //services
 import { AuthRequest } from 'src/app/models/interfaces/Auth/AuthRequest';
@@ -16,23 +16,28 @@ import { Subject, takeUntil } from 'rxjs';
 export class LoginFormComponent implements OnInit, OnDestroy {
   private readonly destroy$: Subject<void> = new Subject();
   ngOnInit(): void {
-    this.onSubmitLoginForm()
+
   }
 
   recivedToken = {} as AuthResponse
+  inputLoginEmail:string ="";
+  InputLoginPassword:string ="";
 
-loginForm = this.formBuilder.group({
-  email:["", Validators.required],
-  password:["", Validators.required]
-})
+// loginForm = this.formBuilder.group({
+//   email:["", Validators.required],
+//   password:["", Validators.required]
+// })
 
-dadosSubmit:AuthRequest = {
-  email:environment.email_test,
-  password:environment.password_test
-}
+//email:environment.email_test,
+  //password:environment.password_test
+
 
 onSubmitLoginForm():void{
-  this.userService.authUser(this.dadosSubmit as AuthRequest)
+  const dadosSubmit:AuthRequest = {
+    email:this.inputLoginEmail,
+    password:this.InputLoginPassword
+  }
+  this.userService.authUser(dadosSubmit as AuthRequest)
   .pipe(takeUntil(this.destroy$))
   .subscribe({
     next:(response)=>{
@@ -47,10 +52,6 @@ onSubmitLoginForm():void{
   })
 }
 
-OnSubmit():void{
-console.log("Submit");
-
-}
 
 constructor (
   private formBuilder:FormBuilder,

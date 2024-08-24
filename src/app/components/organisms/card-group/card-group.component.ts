@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output} from '@angular/core';
 import { GetAllProductsResponse } from 'src/app/models/interfaces/products/responses/GetAllProductsResponse';
+import {faCartPlus} from "@fortawesome/free-solid-svg-icons"
 
 
 
@@ -13,6 +14,7 @@ export class CardGroupComponent implements OnInit {
 
 @Input() ProductDataReceived:GetAllProductsResponse[] = []
 
+addProductIcon = faCartPlus;
 
 CardsData:GetAllProductsResponse[] = this.ProductDataReceived
 

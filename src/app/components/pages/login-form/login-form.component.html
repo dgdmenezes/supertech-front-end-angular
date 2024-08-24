@@ -9,15 +9,17 @@
         </div>
 
         <div class="p-5 pt-0">
-          <form #form="ngForm" (submit)="OnSubmit()">
+          <form #form="ngForm" (submit)="onSubmitLoginForm()">
             <div class="form-floating mb-3">
               <input
                 type="email"
                 class="form-control rounded-3"
                 id="floatingInput"
                 placeholder="Ex.: email@mail.com"
+                name="email"
+                [(ngModel)]="inputLoginEmail"
               />
-              <label htmlFor="floatingInput">Digite seu email</label>
+              <label for="floatingInput">Digite seu email</label>
             </div>
             <div class="form-floating mb-1">
               <input
@@ -25,8 +27,10 @@
                 class="form-control rounded-3"
                 id="floatingPassword"
                 placeholder="Digite sua senha"
+                name="password"
+                [(ngModel)]="InputLoginPassword"
               />
-              <label htmlFor="floatingPassword"> Digite a sua senha </label>
+              <label for="floatingPassword"> Digite a sua senha </label>
             </div>
             <div class="texto-link-div mb-2">
               <a routerLink="" class="texto-link"> Esqueceu a sua senha? </a>
@@ -41,6 +45,7 @@
 
             <h2>COLOCAR ALERT CONDICIONAL</h2>
           </form>
+
           <hr class="my-4" />
           <h2 class="fs-5 fw-bold mb-3">ou entrar com...</h2>
           <button
