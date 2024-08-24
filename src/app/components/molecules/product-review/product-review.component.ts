@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./product-review.component.css']
 })
 export class ProductReviewComponent {
-
+  starValue: number = 5;
 }

@@ -4,7 +4,12 @@
   <div>
     <hr />
     <p>Usuário: <span>Dante</span></p>
-    <p><span>Colocar componente de rating</span></p>
+    <p-rating
+      [(ngModel)]="starValue"
+      [readonly]="true"
+      [cancel]="false"
+    ></p-rating>
+
     <p>
       Esse monitor é incrível, a fidelidade de suas cores me fez ser mais
       acertivo no meu trabalho. Excelente produto, recomendo.

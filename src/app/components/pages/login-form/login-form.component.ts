@@ -1,12 +1,14 @@
 import { Component, OnDestroy, OnInit, Input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Subject, takeUntil } from 'rxjs';
 //services
 import { AuthRequest } from 'src/app/models/interfaces/Auth/AuthRequest';
 import { AuthResponse } from 'src/app/models/interfaces/Auth/AuthResponse';
 import { UserService } from './../../../services/user.service';
 //environments
 import { environment } from 'src/environments/environment.prod';
-import { Subject, takeUntil } from 'rxjs';
+//PrimeNG
+import { Message } from 'primeng/api';
 
 @Component({
   selector: 'app-login-form',
@@ -22,34 +24,36 @@ export class LoginFormComponent implements OnInit, OnDestroy {
   recivedToken = {} as AuthResponse
   inputLoginEmail:string ="";
   InputLoginPassword:string ="";
+  messages!: Message[];
 
 // loginForm = this.formBuilder.group({
 //   email:["", Validators.required],
 //   password:["", Validators.required]
 // })
 
-//email:environment.email_test,
-  //password:environment.password_test
-
-
 onSubmitLoginForm():void{
   const dadosSubmit:AuthRequest = {
     email:this.inputLoginEmail,
     password:this.InputLoginPassword
   }
+
   this.userService.authUser(dadosSubmit as AuthRequest)
   .pipe(takeUntil(this.destroy$))
   .subscribe({
     next:(response)=>{
       this.recivedToken = response
       console.log(this.recivedToken);
+      this.messages = [{ severity: 'success', summary: 'Tudo Certo', detail: 'Entrada Validada' }]
 
     },
     error:(err)=>{
       console.log(err);
-
+      this.messages = [{ severity: 'error', summary: 'Erro', detail: 'Email e/ou senha incorretos', life: 1000 }]
+      this.inputLoginEmail = ""
+      this.InputLoginPassword = ""
     }
   })
+
 }
 
 

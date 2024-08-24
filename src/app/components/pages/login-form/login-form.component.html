@@ -43,7 +43,12 @@
               Continuar
             </button>
 
-            <h2>COLOCAR ALERT CONDICIONAL</h2>
+            <!--Message-->
+            <p-messages
+              [(value)]="messages"
+              [enableService]="false"
+              [closable]="false"
+            ></p-messages>
           </form>
 
           <hr class="my-4" />

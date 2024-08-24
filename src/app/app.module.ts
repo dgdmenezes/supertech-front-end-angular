@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations"
+import {ReactiveFormsModule} from "@angular/forms"
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -41,6 +43,12 @@ import { ProductReviewComponent } from './components/molecules/product-review/pr
 import { ProductSpecsComponent } from './components/molecules/product-specs/product-specs.component';
 import { ProductShowComponent } from './components/molecules/product-show/product-show.component'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+//PrimeNG
+import { RatingModule } from 'primeng/rating';
+import { MessagesModule } from 'primeng/messages';
+
+
 
 registerLocaleData(localePT)
 
@@ -85,8 +93,12 @@ registerLocaleData(localePT)
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    FontAwesomeModule
-
+    FontAwesomeModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    //primeNG
+    RatingModule,
+    MessagesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
