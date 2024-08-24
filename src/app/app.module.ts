@@ -40,6 +40,8 @@ import localePT from "@angular/common/locales/pt";
 import { ProductReviewComponent } from './components/molecules/product-review/product-review.component';
 import { ProductSpecsComponent } from './components/molecules/product-specs/product-specs.component';
 import { ProductShowComponent } from './components/molecules/product-show/product-show.component'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 registerLocaleData(localePT)
 
 @NgModule({
@@ -82,7 +84,8 @@ registerLocaleData(localePT)
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
 
   ],
   providers: [],
