@@ -1,8 +1,20 @@
 <form class="searchbar w-100 me-3" role="search">
-  <input
-    type="text"
-    class="form-control"
-    placeholder="Buscar..."
-    aria-label="Search"
-  />
+  <div class="d-flex">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Buscar..."
+      aria-label="Search"
+      [(ngModel)]="inputText"
+      (input)="onSearch()"
+      name="searchBar"
+    />
+    <fa-icon
+      class="addProductIcon lupa"
+      style="cursor: pointer"
+      [icon]="searchProductIcon"
+      size="lg"
+      (click)="onClick()"
+    ></fa-icon>
+  </div>
 </form>

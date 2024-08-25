@@ -32,3 +32,17 @@
   text-decoration: none;
   color: #111;
 }
+
+.lupa{
+background-color: #FFF;
+padding: 0.5rem;
+border: solid 1px grey ;
+border-radius: 0.6rem;
+box-shadow: 1px 1px black;
+margin-left: 3px;
+}
+
+.lupa:hover{
+  background-color: #ff6500;
+  box-shadow: 1px 1px #a44e08;
+  }
