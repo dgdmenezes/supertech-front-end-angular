@@ -8,13 +8,14 @@
       [(ngModel)]="inputText"
       (input)="onSearch()"
       name="searchBar"
+      (keydown.enter)="onClickOrKeyDownEnter()"
     />
     <fa-icon
       class="addProductIcon lupa"
       style="cursor: pointer"
       [icon]="searchProductIcon"
       size="lg"
-      (click)="onClick()"
+      (click)="onClickOrKeyDownEnter()"
     ></fa-icon>
   </div>
 </form>

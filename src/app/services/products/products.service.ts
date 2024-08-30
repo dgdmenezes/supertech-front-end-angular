@@ -5,6 +5,7 @@ import { Observable } from "rxjs";
 //models
 import { GetAllProductsResponse } from "src/app/models/interfaces/products/responses/GetAllProductsResponse";
 import { GetProductData } from "src/app/models/interfaces/products/responses/GetProductData";
+import {GetProductsCounter} from "src/app/models/interfaces/products/responses/GetProductsCounter"
 //enviroment
 import { environment } from "src/environments/environment.prod";
 
@@ -39,5 +40,13 @@ export class ProductsService {
 
   }
 
+  getCategoryDataAPI(categoryName:string, skip:number, limit:number):Observable<Array<GetAllProductsResponse>>{
+    return this.http.get<Array<GetAllProductsResponse>>(`${this.API_URL}/products/find/find?category=${categoryName}&skip=${skip}&limit=${limit}`)
+  }
+  getAmountProductsByCategoryAPI(categoryName:string):Observable<Array<GetProductsCounter>>{
+    return this.http.get<Array<GetProductsCounter>>(`${this.API_URL}/products/find/count?category=${categoryName}`)
+
+    //http://localhost:3001/products/find/count?category=notebooK
+  }
 
 }

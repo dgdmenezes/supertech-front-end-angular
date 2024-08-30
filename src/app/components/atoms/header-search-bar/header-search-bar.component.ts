@@ -32,7 +32,7 @@ export class HeaderSearchBarComponent implements OnInit, OnDestroy{
     this.searchSubject.next(this.inputText)
   }
 
-  onClick():void{
+  onClickOrKeyDownEnter():void{
     this.productService.getSearchProducts(this.inputText)
     .subscribe({
       next: (response)=>{
@@ -46,6 +46,7 @@ export class HeaderSearchBarComponent implements OnInit, OnDestroy{
     })
 
   }
+
 
   performSearch(searchValue:string){
     this.productService.getSearchBarProducts(searchValue)

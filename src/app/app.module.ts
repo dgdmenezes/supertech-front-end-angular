@@ -36,6 +36,7 @@ import { HomeCarouselComponent } from './components/molecules/home-carousel/home
 import { CardGroupComponent } from './components/organisms/card-group/card-group.component';
 import { CardItemComponent } from './components/molecules/card-item/card-item.component';
 import { AddShoppingCartIconComponent } from './components/icons/add-shopping-cart-icon/add-shopping-cart-icon.component';
+import { PaginatorComponent } from './components/molecules/paginator/paginator.component';
 //Localização PT-BR
 import { registerLocaleData } from '@angular/common';
 import localePT from "@angular/common/locales/pt";
@@ -47,6 +48,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 //PrimeNG
 import { RatingModule } from 'primeng/rating';
 import { MessagesModule } from 'primeng/messages';
+import { PaginatorModule } from 'primeng/paginator';
 
 
 
@@ -86,6 +88,7 @@ registerLocaleData(localePT)
     ProductReviewComponent,
     ProductSpecsComponent,
     ProductShowComponent,
+    PaginatorComponent,
 
   ],
   imports: [
@@ -98,7 +101,8 @@ registerLocaleData(localePT)
     ReactiveFormsModule,
     //primeNG
     RatingModule,
-    MessagesModule
+    MessagesModule,
+    PaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
